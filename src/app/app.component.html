@@ -5,6 +5,9 @@
 </div>
 
 <div class="container">
-    <foto url="assets/img/leao.jpg" titulo="Leão"></foto>
-    <foto url="https://thumbs.dreamstime.com/t/le%C3%A3o-branco-60233481.jpg" titulo="Leão Branco"></foto>
+  <div class="row">
+    <app-painel *ngFor="let foto of fotos" titulo="{{foto.titulo}}" class="col-md-2">
+      <foto  url="{{foto.url}}" titulo="{{foto.titulo}}"></foto>
+    </app-painel>
+  </div>
 </div>

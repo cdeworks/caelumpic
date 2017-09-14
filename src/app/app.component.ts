@@ -10,6 +10,11 @@ export class AppComponent {
   title: String = 'Caelum Pic';
   fotos: Object[] = [];
   constructor(http: Http) {
-    http.get('http://localhost:3000/v1/fotos');
+    http.get('http://localhost:3000/v1/fotos')
+      .map(res => res.json())
+      .subscribe(
+          fotos => this.fotos = fotos,
+          erro => console.log(erro)
+      );
   }
 }
