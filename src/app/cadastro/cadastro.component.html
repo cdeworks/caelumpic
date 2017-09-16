@@ -1,11 +1,16 @@
 <div class="container">
-    <form (submit)="cadastrar($event)" class="row">
+    <form #meuForm="ngForm" (submit)="cadastrar($event)" class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label for="">Título</label>
                 <input 
+                    #titulo="ngModel"
+                    required
                     name="titulo"
                     [(ngModel)]="foto.titulo" type="text" class="form-control">
+                <span *ngIf="titulo.invalid" class="form-control alert-danger">
+                    Título obrigatório
+                </span>
             </div>
             <div class="form-group">
                 <label for="">URL</label>
@@ -19,7 +24,7 @@
                     name="descricao"
                     [(ngModel)]="foto.descricao" class="form-control"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" >
                 Salvar
             </button>
             <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
